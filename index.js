@@ -5,8 +5,11 @@ var exphbs = require('express-handlebars')
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+let reviews = [ {title: "Bad review", movieTitle: "Lame" },
+                {title: "another review", movieTitle: "Swag" }]
+
 app.get('/', (req, res) => {
-    res.render('home', { msg: 'Handlebars are lame'})
+    res.render('reviews-index', {reviews: reviews })
 })
 
 app.listen(3000, () => {
