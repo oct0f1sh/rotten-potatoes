@@ -10,7 +10,7 @@ const app = express()
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-mongoose.connect('mongodb://localhost/rotten-potatoes');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
