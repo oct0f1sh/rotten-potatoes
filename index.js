@@ -17,7 +17,9 @@ app.use(methodOverride('_method'));
 
 const reviews = require('./controllers/reviews')(app);
 
-app.listen(3000, () => {
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
     console.log('look at me listening on port 3000')
 });
 
