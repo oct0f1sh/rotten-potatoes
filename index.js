@@ -3,6 +3,7 @@ var exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const Comment = require('./models/comment')
 
 const app = express()
 

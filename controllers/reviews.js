@@ -1,4 +1,5 @@
 const Review = require('../models/review')
+const Comment = require('../models/comment')
 
 module.exports = function(app) {
     
@@ -24,11 +25,15 @@ module.exports = function(app) {
     });
     
     app.get('/reviews/:id', (req, res) => {
-        Review.findById(req.params.id).then((review) => {
-            res.render('reviews-show', {review: review});
+        console.log('ugh')
+        Review.findById(req.params.id).then(review => {
+            Comment.find({reviewId: req.params.id}).then(comments => {
+                console.log(comments)
+                res.render('reviews-show', {review: review, comments: comments})
+            })
         }).catch((err) => {
             console.log(err.message);
-        });
+        })
     })
     
     app.get('/reviews/:id/edit', (req, res) => {
@@ -49,6 +54,14 @@ module.exports = function(app) {
         console.log('DELETE review')
         Review.findByIdAndRemove(req.params.id).then((review) => {
             res.redirect('/');
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    })
+
+    app.post('/reviews/comments', (req, res) => {
+        Comment.create(req.body).then(comment => {
+            res.redirect(`/reviews/${comment.reviewId}`);
         }).catch((err) => {
             console.log(err.message);
         })

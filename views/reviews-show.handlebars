@@ -14,7 +14,12 @@
 
         <hr>
         {{> comment-form}}
-        
+        <hr>
+
+        {{#each comments}}
+            {{> comment}}
+        {{/each}}
+
     </div>
 </div>
 
