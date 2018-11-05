@@ -20,7 +20,7 @@ const reviews = require('./controllers/reviews')(app);
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-    console.log('look at me listening on port 3000')
+    console.log(`look at me listening on port ${port}`)
 });
 
 module.exports = app;
