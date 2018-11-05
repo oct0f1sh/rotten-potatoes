@@ -1,7 +1,12 @@
-<form method="POST" action="/reviews/{{review._id}}?_method=PUT">
-    {{> reviews-form}}
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <form method="POST" action="/reviews/{{review._id}}?_method=PUT">
+            {{> reviews-form}}
 
-    <p>
-        <button type="submit">Save Review</button>
-    </p>
-</form>
+            <p>
+                <button type="submit">Save Review</button>
+            </p>
+        </form>
+    </div>
+</div>
+
